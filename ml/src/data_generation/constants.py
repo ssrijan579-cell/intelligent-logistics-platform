@@ -72,3 +72,35 @@ TRAFFIC_LEVELS = [
     "Medium",
     "High",
 ]
+
+WAREHOUSE_LOAD = [
+    "Low",
+    "Medium",
+    "High",
+]
+
+CUSTOMER_PRIORITY = [
+    "Standard",
+    "Express",
+]
+
+FUEL_TYPES = [
+    "Diesel",
+    "Petrol",
+    "Electric",
+]
+
+DELAY_REASONS = [
+    "Traffic",
+    "Weather",
+    "Warehouse",
+    "Vehicle Breakdown",
+    "No Delay",
+]
+
+VEHICLE_SPEED = {
+    "Bike": 45,
+    "Van": 55,
+    "Mini Truck": 50,
+    "Truck": 40,
+}

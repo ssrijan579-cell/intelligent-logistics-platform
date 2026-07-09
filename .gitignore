@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual Environment
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# ML Models
+ml/models/*.pkl
+ml/models/*.joblib
+
+# Experiment Tracking
+mlruns/
+
+# Logs
+logs/
+*.log
+
+# Coverage
+.coverage
+htmlcov/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Cache
+.pytest_cache/
+.mypy_cache/
