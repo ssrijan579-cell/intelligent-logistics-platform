@@ -10,7 +10,7 @@ def predict_shipment(data):
         response = requests.post(
             API_URL,
             json=data,
-            timeout=30,
+            timeout=120,
         )
 
         if response.status_code == 200:
