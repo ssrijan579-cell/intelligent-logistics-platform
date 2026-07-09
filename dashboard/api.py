@@ -1,6 +1,6 @@
 import requests
 
-API_URL = "https://intelligent-logistics-api.onrender.com/predict"
+API_URL = "https://intelligent-logistics-platform.onrender.com/predict"
 
 
 def predict_shipment(data):
