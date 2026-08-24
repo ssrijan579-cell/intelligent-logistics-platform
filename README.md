@@ -4,6 +4,9 @@ An end-to-end **AI-powered logistics intelligence platform** for predicting ship
 
 The platform combines **Machine Learning, Explainable AI, FastAPI, MLflow, data pipelines, model evaluation, and logistics analytics** into a unified system.
 
+## 🚀 Live Demo
+
+🔗 **Dashboard:** [Open Live Dashboard](https://intelligent-logistics-platform-m992dghkqv5wqod6h6zrkv.streamlit.app/)
 ---
 
 ## 🎯 Problem Statement
