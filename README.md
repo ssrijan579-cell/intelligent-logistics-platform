@@ -1,23 +1,23 @@
 # 🚚 Intelligent Delivery Delay Prediction & Logistics Intelligence Platform
 
-An enterprise-grade AI-powered logistics platform designed to predict shipment delays, forecast delivery ETAs, explain machine learning predictions, and provide actionable logistics intelligence through interactive dashboards.
+An end-to-end **AI-powered logistics intelligence platform** for predicting shipment delays, estimating delivery timelines, explaining model predictions, and providing actionable operational insights through an interactive dashboard.
 
-The platform is being developed as an end-to-end system combining **Machine Learning, Explainable AI, MLOps, Backend APIs, Frontend Visualization, and Cloud Deployment**.
+The platform combines **Machine Learning, Explainable AI, FastAPI, MLflow, data pipelines, model evaluation, and logistics analytics** into a unified system.
 
 ---
 
 ## 🎯 Problem Statement
 
-Delivery delays are a major challenge in logistics operations. Delays can lead to customer dissatisfaction, increased operational costs, inefficient resource allocation, and difficulty in managing high-risk shipments.
+Delivery delays are a major challenge in logistics operations. Unexpected delays can increase operational costs, affect customer satisfaction, create inefficient resource allocation, and make it difficult for operations teams to prioritize high-risk shipments.
 
-This platform aims to help logistics teams:
+This platform addresses the problem by using machine learning to:
 
-* Identify shipments at high risk of delay
-* Predict expected delivery timelines
-* Understand the factors contributing to delays
-* Monitor logistics performance through dashboards
+* Predict shipment delay risk
+* Estimate delivery timelines
+* Identify the factors contributing to predictions
+* Analyze logistics performance
+* Surface high-risk shipments
 * Support data-driven operational decisions
-* Improve operational planning through predictive analytics
 
 ---
 
@@ -25,50 +25,54 @@ This platform aims to help logistics teams:
 
 ### 📦 Shipment Delay Prediction
 
-Predict whether a shipment is likely to experience a delivery delay using machine learning models.
+Machine learning models predict the likelihood and severity of shipment delays using shipment, route, operational, and historical features.
 
-### ⏱️ ETA Forecasting
+### ⏱️ Delivery Time / ETA Prediction
 
-Estimate expected delivery timelines using shipment, route, operational, and historical features.
+The platform includes regression-based prediction capabilities for estimating delivery time.
 
 ### 🔍 Explainable AI
 
-Use **SHAP (SHapley Additive exPlanations)** to understand individual model predictions and identify the features contributing to delay risk.
+Model predictions are explained using feature importance and SHAP-based explainability techniques to provide insight into the factors influencing delay predictions.
 
 ### 📊 Logistics Intelligence Dashboard
 
-Provide interactive dashboards for monitoring:
+An interactive dashboard provides operational analytics and model insights, including:
 
 * Shipment performance
-* Delay trends
-* Operational KPIs
-* High-risk shipments
-* Route performance
-* Hub/office performance
+* Delay analysis
+* Model analytics
+* Dataset exploration
+* Feature importance
+* Prediction insights
 
-### ⚡ FastAPI Backend
+### ⚡ FastAPI Prediction API
 
-Expose machine learning models and platform services through REST APIs.
+A FastAPI-based inference layer exposes the trained machine learning models through structured API endpoints.
 
-### ⚛️ React Frontend
+### 🧪 MLflow & MLOps
 
-Provide an interactive frontend for visualizing predictions, ETAs, operational metrics, and logistics insights.
+The project incorporates experiment tracking and model lifecycle practices to support reproducible machine learning workflows.
 
-### 🧪 MLflow Experiment Tracking
+### 🤖 Multiple ML Models
 
-Track machine learning experiments, parameters, metrics, artifacts, and model versions.
+The project evaluates multiple machine learning approaches and stores model comparison and evaluation results.
 
-### 🐳 Docker Deployment
+### 🧬 Reproducible ML Pipeline
 
-Containerize application components to provide a consistent and reproducible deployment environment.
+The project separates:
 
-### ☁️ AWS Deployment
+* Data generation
+* Data processing
+* Feature engineering
+* Model training
+* Model evaluation
+* Model inference
+* Explainability
 
-The platform is designed for cloud deployment using AWS infrastructure.
+### 🧪 Testing
 
-### 🤖 AI Operations Copilot
-
-A planned Phase 2 feature that will allow logistics teams to interact with operational data using natural language and receive AI-powered recommendations.
+Automated tests are included for validating important prediction and root-cause functionality.
 
 ---
 
@@ -78,236 +82,259 @@ A planned Phase 2 feature that will allow logistics teams to interact with opera
                          Shipment Data
                               │
                               ▼
-                      Data Validation
+                      Data Generation
                               │
                               ▼
-                     Data Preprocessing
+                       Data Processing
                               │
                               ▼
                      Feature Engineering
                               │
                               ▼
-                      ML Prediction Layer
-                       ┌──────┴──────┐
-                       │             │
-                       ▼             ▼
-               Delay Prediction   ETA Forecasting
-                       │             │
-                       └──────┬──────┘
+                       Model Training
                               │
+                              ▼
+                     Model Evaluation
+                              │
+                    ┌─────────┴─────────┐
+                    ▼                   ▼
+             Delay Prediction      ETA Prediction
+                    │                   │
+                    └─────────┬─────────┘
                               ▼
                      Explainable AI
-                          (SHAP)
+                    Feature Importance
+                         + SHAP
                               │
                               ▼
-                       FastAPI Backend
+                       FastAPI API
                               │
                               ▼
-                       React Frontend
+                    Prediction Services
                               │
                               ▼
-                  Logistics Intelligence
-                         Dashboard
+                  Logistics Dashboard
                               │
                               ▼
-                       Operational
-                         Insights
+                  Operational Insights
 ```
 
 ---
 
 ## 🧠 Machine Learning Pipeline
 
-The machine learning workflow is designed as an end-to-end pipeline:
+The ML pipeline follows an end-to-end workflow:
 
 ```text
-Raw Shipment Data
-        ↓
+Data Generation
+      ↓
 Data Ingestion
-        ↓
+      ↓
 Data Validation
-        ↓
-Data Preprocessing
-        ↓
+      ↓
+Preprocessing
+      ↓
 Feature Engineering
-        ↓
+      ↓
+Train / Validation / Test Split
+      ↓
 Model Training
-        ↓
+      ↓
+Model Comparison
+      ↓
 Model Evaluation
-        ↓
-MLflow Experiment Tracking
-        ↓
-Model Versioning
-        ↓
-Model Deployment
-        ↓
-Real-Time Prediction
+      ↓
+Best Model Selection
+      ↓
+Model Serialization
+      ↓
+API Inference
+      ↓
+Dashboard Analytics
 ```
 
 ---
 
-## 🤖 Machine Learning Models
+## 📊 Machine Learning
 
-Multiple machine learning algorithms will be evaluated for shipment delay prediction and ETA forecasting.
+The platform supports both **classification and regression-based prediction workflows**.
 
-### Planned Models
+### Classification
+
+The classification pipeline is designed to predict shipment delay risk.
+
+Candidate models include:
 
 * Random Forest
 * XGBoost
 * LightGBM
-* Scikit-learn classification and regression models
+* CatBoost
+* Scikit-learn classification models
 
-Models will be compared using appropriate evaluation metrics before selecting the final production model.
+### Regression
+
+The regression pipeline estimates shipment delivery time / delay duration.
+
+Models can be compared using:
+
+* MAE
+* RMSE
+* R²
+
+---
+
+## 🏆 Model Selection
+
+The project includes model comparison artifacts to evaluate different approaches and identify the best-performing model.
+
+Generated model artifacts include:
+
+```text
+ml/models/
+│
+├── best_model.pkl
+├── random_forest.pkl
+├── random_forest_model.pkl
+├── delay_regression_model.pkl
+├── preprocessor.pkl
+├── model_comparison_results.csv
+├── regression_results.csv
+└── feature_importance.csv
+```
+
+The trained artifacts are used by the inference layer for prediction.
 
 ---
 
 ## 🔍 Explainable AI
 
-The platform will use **SHAP** to make machine learning predictions more interpretable.
+A major component of the platform is model interpretability.
 
-SHAP explanations will help answer questions such as:
+The explainability layer helps answer:
 
 * Why was this shipment predicted to be delayed?
 * Which features contributed most to the prediction?
-* Which factors increased or decreased delay risk?
-* What are the most important features across shipments?
+* Which operational factors increase delay risk?
+* Which features have the greatest overall influence on the model?
 
-This will help logistics teams understand and trust model predictions rather than treating the model as a black box.
+The project includes dedicated explainability components and feature importance artifacts.
+
+---
+
+## 📈 Model Evaluation
+
+The platform evaluates models using task-appropriate metrics.
+
+### Classification Metrics
+
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* ROC-AUC
+* Confusion Matrix
+
+### Regression Metrics
+
+* Mean Absolute Error (MAE)
+* Root Mean Squared Error (RMSE)
+* R² Score
+
+Model comparison results are stored in the `ml/models/` directory.
+
+> Actual benchmark values should be reported directly from the generated evaluation files rather than manually estimated.
 
 ---
 
 ## 📊 Logistics Intelligence Dashboard
 
-The dashboard will provide operational visibility into shipment performance and predictive insights.
+The project includes an interactive dashboard built around the machine learning pipeline.
 
-### Planned Dashboard Components
+### Dashboard Modules
 
-* Total shipments
-* Delayed shipments
-* Delay rate
-* Average delivery ETA
-* High-risk shipments
-* Delay trends
-* Route-level performance
-* Hub/office performance
-* Shipment risk distribution
-* Model prediction explanations
-* Operational KPIs
+#### 📈 Model Analytics
 
----
+Provides visibility into model performance and analytical results.
 
-## ⚡ Backend API
+#### 🔎 Dataset Explorer
 
-The backend is being developed using **FastAPI**.
+Allows users to inspect and explore the underlying logistics data.
 
-### Planned API Services
+#### 📋 Project Information
+
+Provides information about the platform, its purpose, architecture, and technology stack.
+
+The dashboard is organized under:
 
 ```text
-POST /predict
-POST /eta
-GET  /health
-GET  /model-info
+dashboard/
+├── app.py
+├── api.py
+└── pages/
+    ├── 1_Model_Analytics.py
+    ├── 2_Dataset_Explorer.py
+    └── 3_About_Projects.py
 ```
 
-These APIs will connect the machine learning models with the frontend application.
+---
 
-> API endpoints will be updated as backend development progresses.
+## ⚡ FastAPI Inference Layer
+
+The project includes a dedicated API layer for model inference.
+
+```text
+ml/api/
+├── __init__.py
+├── app.py
+├── predictor.py
+└── schemas.py
+```
+
+### Responsibilities
+
+* Load trained model artifacts
+* Validate prediction inputs
+* Transform incoming data
+* Generate model predictions
+* Return structured prediction responses
+
+The API layer separates model inference from the dashboard and allows the ML system to be consumed as a service.
 
 ---
 
-## 🗄️ Database
+## 🧪 MLOps
 
-**PostgreSQL** will be used for storing application and logistics-related data.
+The project incorporates MLOps principles to make the machine learning workflow more reproducible and maintainable.
 
-Planned database components include:
-
-* Shipment information
-* Prediction results
-* ETA predictions
-* Operational metrics
-* Prediction history
-* Model-related metadata
-
----
-
-## 🧪 MLOps & Experiment Tracking
-
-**MLflow** will be used to manage machine learning experiments and model lifecycle activities.
-
-The MLOps workflow will include:
+### MLOps Components
 
 * Experiment tracking
-* Parameter logging
-* Metric logging
 * Model artifacts
-* Model versioning
-* Reproducible experiments
-* Model deployment workflow
+* Model comparison
+* Reproducible training
+* Serialized preprocessing pipelines
+* Model versioning workflow
+* Structured inference API
+
+MLflow is used as part of the experiment tracking workflow.
 
 ---
 
-## 🐳 Docker & Deployment
+## 🗂️ Data Pipeline
 
-Docker will be used to containerize the application components and provide a reproducible development and deployment environment.
-
-Planned services include:
+The project contains dedicated data directories:
 
 ```text
-Frontend
-   │
-Backend
-   │
-ML Service
-   │
-PostgreSQL
-   │
-MLflow
+ml/data/
+├── raw/
+└── processed/
 ```
 
----
-
-## ☁️ Cloud Infrastructure
-
-The platform is designed with cloud deployment in mind.
-
-### Target Technologies
-
-* AWS
-* Docker
-* FastAPI
-* React
-* PostgreSQL
-* MLflow
-
-Cloud deployment will be implemented during the deployment phase.
+The repository also includes a data-generation component for creating logistics shipment data for experimentation and model development.
 
 ---
 
-## 🤖 AI Operations Copilot — Phase 2
-
-A planned AI-powered operations assistant will allow logistics users to interact with operational data using natural language.
-
-### Example Queries
-
-```text
-Which routes have the highest delay rate?
-
-Which shipments are currently at high risk?
-
-Why is the delay rate increasing?
-
-Which hubs are underperforming?
-
-What are the major factors causing delivery delays?
-
-Which shipments should operations prioritize?
-```
-
-The goal is to make logistics intelligence accessible without requiring users to manually analyze dashboards or datasets.
-
----
-
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
 ### Programming & Data
 
@@ -320,31 +347,35 @@ The goal is to make logistics intelligence accessible without requiring users to
 * Scikit-learn
 * XGBoost
 * LightGBM
+* CatBoost
 
 ### Explainable AI
 
 * SHAP
+* Feature Importance Analysis
 
-### Backend
+### API
 
 * FastAPI
 
-### Frontend
+### Dashboard
 
-* React
-
-### Database
-
-* PostgreSQL
+* Streamlit
 
 ### MLOps
 
 * MLflow
 
-### Deployment
+### Testing
 
-* Docker
-* AWS
+* Python Testing Frameworks
+
+### Development & Deployment
+
+* Git
+* GitHub
+* Environment configuration
+* Serialized ML artifacts
 
 ---
 
@@ -353,146 +384,243 @@ The goal is to make logistics intelligence accessible without requiring users to
 ```text
 intelligent-logistics-platform/
 │
-├── backend/
-│   ├── api/
-│   ├── models/
-│   ├── services/
-│   └── main.py
-│
-├── frontend/
+├── dashboard/
+│   ├── app.py
+│   ├── api.py
+│   └── pages/
+│       ├── 1_Model_Analytics.py
+│       ├── 2_Dataset_Explorer.py
+│       └── 3_About_Projects.py
 │
 ├── ml/
+│   ├── api/
+│   │   ├── app.py
+│   │   ├── predictor.py
+│   │   └── schemas.py
+│   │
 │   ├── data/
-│   ├── preprocessing/
-│   ├── features/
-│   ├── training/
-│   └── evaluation/
+│   │   ├── raw/
+│   │   └── processed/
+│   │
+│   ├── models/
+│   │   ├── best_model.pkl
+│   │   ├── random_forest.pkl
+│   │   ├── random_forest_model.pkl
+│   │   ├── delay_regression_model.pkl
+│   │   ├── preprocessor.pkl
+│   │   ├── feature_importance.csv
+│   │   ├── model_comparison_results.csv
+│   │   └── regression_results.csv
+│   │
+│   └── src/
+│       ├── data_generation/
+│       ├── explainability/
+│       ├── models/
+│       ├── feature_engineering.py
+│       └── train.py
 │
-├── notebooks/
-│
-├── tests/
-│
-├── docker/
-│
+├── test_root_cause.py
 ├── requirements.txt
-├── docker-compose.yml
+├── .env.example
+├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
-> The project structure will evolve as development progresses.
+---
+
+## 💻 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/ssrijan579-cell/intelligent-logistics-platform.git
+```
+
+Navigate to the project:
+
+```bash
+cd intelligent-logistics-platform
+```
+
+Create and activate a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+### macOS / Linux
+
+```bash
+source .venv/bin/activate
+```
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-## 📈 Model Performance
+## ▶️ Running the Dashboard
 
-Model performance will be added after the training and evaluation phase.
+Launch the Streamlit dashboard:
 
-### Delay Prediction
+```bash
+streamlit run dashboard/app.py
+```
 
-| Model         | Accuracy | Precision | Recall | F1 Score | ROC-AUC |
-| ------------- | -------: | --------: | -----: | -------: | ------: |
-| Random Forest |      TBD |       TBD |    TBD |      TBD |     TBD |
-| XGBoost       |      TBD |       TBD |    TBD |      TBD |     TBD |
-| LightGBM      |      TBD |       TBD |    TBD |      TBD |     TBD |
-
-### ETA Forecasting
-
-| Model         | MAE | RMSE |  R² |
-| ------------- | --: | ---: | --: |
-| Random Forest | TBD |  TBD | TBD |
-| XGBoost       | TBD |  TBD | TBD |
-| LightGBM      | TBD |  TBD | TBD |
-
-> Actual model performance metrics will be added after model training and evaluation.
+The dashboard provides access to model analytics, dataset exploration, and project information.
 
 ---
 
-## 📸 Screenshots
+## ⚡ Running the API
 
-Screenshots of the following components will be added as development progresses:
+The FastAPI inference service is located under:
 
-* Logistics intelligence dashboard
-* Shipment delay prediction interface
-* ETA forecasting interface
-* SHAP prediction explanation
-* MLflow experiment tracking
-* FastAPI API documentation
+```text
+ml/api/
+```
 
----
+Run the API using:
 
-## 🗺️ Development Roadmap
+```bash
+uvicorn ml.api.app:app --reload
+```
 
-### Sprint 0 — Foundation & Architecture
-
-* [x] Repository setup
-* [x] Project architecture
-* [x] Technology stack selection
-* [x] Initial system design
-
-### Sprint 1 — Data & Machine Learning
-
-* [ ] Data ingestion
-* [ ] Data validation
-* [ ] Exploratory data analysis
-* [ ] Feature engineering
-* [ ] Delay prediction model
-* [ ] ETA forecasting model
-* [ ] Model evaluation
-
-### Sprint 2 — Explainability & MLOps
-
-* [ ] SHAP integration
-* [ ] MLflow experiment tracking
-* [ ] Model versioning
-* [ ] Model inference pipeline
-
-### Sprint 3 — Backend & Frontend
-
-* [ ] FastAPI backend
-* [ ] Prediction APIs
-* [ ] React frontend
-* [ ] PostgreSQL integration
-* [ ] Logistics intelligence dashboard
-
-### Sprint 4 — Deployment
-
-* [ ] Dockerization
-* [ ] Docker Compose
-* [ ] AWS deployment
-* [ ] Production testing
-
-### Phase 2 — AI Operations Copilot
-
-* [ ] Natural-language logistics queries
-* [ ] AI-powered operational insights
-* [ ] Automated recommendations
-* [ ] Conversational analytics
+The API can then be accessed locally through the FastAPI server.
 
 ---
 
-## 🚧 Project Status
+## 🧠 Training the Models
 
-**Current Phase: Sprint 0 — Foundation & Architecture**
+The main training workflow is located in:
 
-The project is currently under active development.
+```text
+ml/src/train.py
+```
 
-The architecture, technology stack, and initial system design have been established. Machine learning, MLOps, backend, frontend, and deployment components will be implemented progressively according to the development roadmap.
+Run:
+
+```bash
+python ml/src/train.py
+```
+
+The training pipeline generates model artifacts and evaluation results under:
+
+```text
+ml/models/
+```
+
+---
+
+## 🧪 Running Tests
+
+The repository includes automated testing for prediction/root-cause functionality.
+
+Run:
+
+```bash
+pytest
+```
+
+---
+
+## 📌 Model Artifacts
+
+The repository maintains trained model and preprocessing artifacts including:
+
+* Best-performing model
+* Random Forest models
+* Regression model
+* Feature preprocessing pipeline
+* Feature importance results
+* Model comparison results
+* Regression evaluation results
+
+These artifacts allow the inference API to use previously trained models without retraining during every prediction request.
+
+---
+
+## 🔐 Environment Configuration
+
+Environment configuration is provided through:
+
+```text
+.env.example
+```
+
+Create your local environment file:
+
+```bash
+cp .env.example .env
+```
+
+Add environment-specific values as required.
+
+> Never commit API keys, credentials, passwords, or other secrets to GitHub.
+
+---
+
+## 📊 Business Applications
+
+The platform can support logistics operations by helping teams:
+
+* Identify high-risk shipments
+* Prioritize operational interventions
+* Understand major delay drivers
+* Monitor shipment performance
+* Compare model predictions
+* Analyze logistics datasets
+* Support proactive delivery management
 
 ---
 
 ## 🔮 Future Enhancements
 
-* Real-time shipment prediction
+Potential future improvements include:
+
+* Real-time shipment tracking
 * Automated model retraining
-* Model monitoring
 * Data drift detection
-* Prediction drift monitoring
+* Model monitoring
+* Real-time alerts for high-risk shipments
 * Advanced route-level analytics
-* Automated high-risk shipment alerts
-* AI-powered operational recommendations
-* LLM-based logistics assistant
+* Automated operational recommendations
+* LLM-powered logistics assistant
 * Conversational analytics
-* Automated reporting
+* Cloud deployment
+* CI/CD automation
+
+---
+
+## 🚧 Project Status
+
+**Status: Completed ✅**
+
+The core end-to-end logistics intelligence platform has been implemented, including:
+
+* Machine learning pipeline
+* Feature engineering
+* Model training
+* Model comparison
+* Regression and classification workflows
+* Model artifacts
+* Explainability components
+* FastAPI inference layer
+* Streamlit analytics dashboard
+* Dataset exploration
+* Automated testing
+* MLOps-oriented experiment tracking
+
+The project can be further extended with production monitoring, real-time integrations, cloud infrastructure, and advanced AI capabilities.
 
 ---
 
@@ -500,10 +628,12 @@ The architecture, technology stack, and initial system design have been establis
 
 **Srijan Srivastava**
 
-🔗 GitHub: [ssrijan579-cell](https://github.com/ssrijan579-cell)
+🔗 GitHub: https://github.com/ssrijan579-cell
 
 ---
 
-⭐ If you find this project interesting, consider giving the repository a star!
+## ⭐ Project
 
-**This project is actively under development.**
+If you find this project interesting, consider giving the repository a ⭐.
+
+Built with **Python, Machine Learning, Explainable AI, FastAPI, Streamlit, and MLOps**.
