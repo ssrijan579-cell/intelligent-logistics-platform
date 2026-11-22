@@ -62,6 +62,13 @@ st.markdown("---")
 
 st.subheader("Customer Experience Overview")
 
+average_rating = summary.get("average_rating")
+
+try:
+    average_rating = float(average_rating or 0)
+except (TypeError, ValueError):
+    average_rating = 0.0
+
 col1, col2, col3, col4 = st.columns(4)
 
 col1.metric(
@@ -71,7 +78,7 @@ col1.metric(
 
 col2.metric(
     "Average Rating",
-    f"{summary.get('average_rating', 0):.2f} / 5",
+    f"{average_rating:.2f} / 5",
 )
 
 col3.metric(
