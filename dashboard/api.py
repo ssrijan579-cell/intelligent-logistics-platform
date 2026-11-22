@@ -25,3 +25,45 @@ def predict_shipment(data):
         return {
             "error": str(e)
         }
+
+# =====================================================
+# Customer Feedback API
+# =====================================================
+
+import os
+
+FEEDBACK_API_BASE_URL = os.getenv(
+    "FEEDBACK_API_BASE_URL",
+    "http://127.0.0.1:8000"
+).rstrip("/")
+
+
+def submit_feedback(data):
+    response = requests.post(
+        f"{FEEDBACK_API_BASE_URL}/feedback",
+        json=data,
+        timeout=30,
+    )
+    response.raise_for_status()
+    return response.json()
+
+
+def get_feedback_records(admin_key, limit=100, offset=0):
+    response = requests.get(
+        f"{FEEDBACK_API_BASE_URL}/feedback/admin",
+        headers={"X-Admin-API-Key": admin_key},
+        params={"limit": limit, "offset": offset},
+        timeout=30,
+    )
+    response.raise_for_status()
+    return response.json()
+
+
+def get_feedback_summary(admin_key):
+    response = requests.get(
+        f"{FEEDBACK_API_BASE_URL}/feedback/admin/summary",
+        headers={"X-Admin-API-Key": admin_key},
+        timeout=30,
+    )
+    response.raise_for_status()
+    return response.json()

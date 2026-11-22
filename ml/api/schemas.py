@@ -62,3 +62,31 @@ class PredictionResponse(BaseModel):
     root_causes: List[str]
 
     recommendations: List[str]
+
+# ==========================================================
+# Customer Feedback Schemas
+# ==========================================================
+
+from pydantic import Field
+
+
+class FeedbackCreate(BaseModel):
+
+    shipment_id: str = Field(
+        min_length=10,
+        max_length=10,
+        pattern=r"^SHP\d{7}$",
+    )
+
+    overall_rating: int = Field(ge=1, le=5)
+
+    delivery_rating: int = Field(ge=1, le=5)
+
+    agent_rating: int = Field(ge=1, le=5)
+
+    packaging_rating: int = Field(ge=1, le=5)
+
+    comments: str = Field(
+        min_length=5,
+        max_length=2000,
+    )

@@ -43,3 +43,7 @@ dist/
 # Cache
 .pytest_cache/
 .mypy_cache/
+# Customer Feedback Database
+ml/data/feedback/*.db
+ml/data/feedback/*.db-*
+printf '\n' >> .gitignore
