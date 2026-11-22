@@ -4,6 +4,11 @@ import requests
 import streamlit as st
 
 API_URL = "https://intelligent-logistics-platform.onrender.com/predict"
+def get_feedback_api_status():
+    return {
+        "api_url": FEEDBACK_API_BASE_URL,
+        "using_localhost": "127.0.0.1" in FEEDBACK_API_BASE_URL,
+    }
 
 
 def predict_shipment(data):
@@ -41,6 +46,9 @@ except Exception:
         "http://127.0.0.1:8000"
     ).rstrip("/")
 
+if FEEDBACK_API_BASE_URL.startswith("http://127.0.0.1"):
+    pass
+
 def submit_feedback(data):
     response = requests.post(
         f"{FEEDBACK_API_BASE_URL}/feedback",
@@ -70,3 +78,10 @@ def get_feedback_summary(admin_key):
     )
     response.raise_for_status()
     return response.json()
+
+def get_feedback_api_status():
+    return {
+        "configured": bool(FEEDBACK_API_BASE_URL),
+        "using_localhost": "127.0.0.1" in FEEDBACK_API_BASE_URL,
+        "api_url": FEEDBACK_API_BASE_URL,
+    }

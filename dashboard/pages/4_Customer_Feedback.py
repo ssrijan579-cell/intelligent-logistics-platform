@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-from api import submit_feedback
+from api import submit_feedback, get_feedback_api_status
 
 st.set_page_config(
     page_title="Customer Feedback",
@@ -107,7 +107,7 @@ if submitted:
         except requests.HTTPError as error:
 
             status_code = (
-             rror.response.status_code
+                error.response.status_code
                 if error.response is not None
                 else None
             )
@@ -134,3 +134,8 @@ if submitted:
                 "Please try again later."
             )
             st.caption(str(error))
+
+from api import get_feedback_api_status
+
+st.write("Feedback API configuration:", get_feedback_api_status())
+st.write("DEBUG — Feedback API:", get_feedback_api_status())
