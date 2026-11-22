@@ -1,4 +1,7 @@
+import os
+
 import requests
+import streamlit as st
 
 API_URL = "https://intelligent-logistics-platform.onrender.com/predict"
 
@@ -30,13 +33,13 @@ def predict_shipment(data):
 # Customer Feedback API
 # =====================================================
 
-import os
-
-FEEDBACK_API_BASE_URL = os.getenv(
-    "FEEDBACK_API_BASE_URL",
-    "http://127.0.0.1:8000"
-).rstrip("/")
-
+try:
+    FEEDBACK_API_BASE_URL = st.secrets["FEEDBACK_API_BASE_URL"].rstrip("/")
+except Exception:
+    FEEDBACK_API_BASE_URL = os.getenv(
+        "FEEDBACK_API_BASE_URL",
+        "http://127.0.0.1:8000"
+    ).rstrip("/")
 
 def submit_feedback(data):
     response = requests.post(
